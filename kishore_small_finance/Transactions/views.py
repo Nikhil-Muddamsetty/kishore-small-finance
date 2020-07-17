@@ -24,8 +24,9 @@ def uploadTransactionsView(request):
 
 class TransactionAccountListView(ListView):
     model = Account
-    template_name = "Transactions/transaction_account_list.html"
+    template_name = "Transactions/transaction_update_list.html"
     fields = ['customer','loan_amount','outstanding_amount']
 
 class TransactionDisplayByDateListView(ListView):
     model = Transaction
+    template_name = 'Transaction/transaction_account_list.html'
