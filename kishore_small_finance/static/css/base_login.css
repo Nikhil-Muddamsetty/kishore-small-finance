@@ -1,0 +1,13 @@
+body{
+  margin: 0;
+}
+
+header{
+  background-color: #0F222D;
+}
+
+.container{
+  width: 960px;
+  max-width: 85%;
+  margin: 0 auto;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Create New Customer
+{% endblock %}
+
+{% block nav-Customers %}
+current-link
+{% endblock %}
+
+{% block main %}
+<div class="main-column">
+  <div class="col sub-navigation">
+    <ul class="sub-navigation-ul">
+      <li class="sub-navigation-li"><a class="sub-nav-link " href="/customer/">All Customer</a></li>
+      <li class="sub-navigation-li"><a class="sub-nav-link current-link" href="/customer/create/">Add New Customer</a></li>
+    </ul>
+  </div>
+  <div class="col main-data">
+    <form class="" method="post">
+      {{form.as_p}}
+      {%csrf_token%}
+      <button type="submit" name="button">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

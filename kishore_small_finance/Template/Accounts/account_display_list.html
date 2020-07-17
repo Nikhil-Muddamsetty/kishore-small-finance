@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Accounts
+{% endblock %}
+
+{% block nav-Accounts %}
+current-link
+{% endblock %}
+
+{% block main %}
+<div class="main-column">
+  <div class="col sub-navigation">
+    <ul class="sub-navigation-ul">
+      <li class="sub-navigation-li"><a class="sub-nav-link current-link" href="/account/">All Accounts</a></li>
+      <li class="sub-navigation-li"><a class="sub-nav-link " href="/account/create/">Add New Account</a></li>
+    </ul>
+  </div>
+  <div class="col main-data">
+    <table class="customers-data">
+      <thead>
+        <th style="width:30%">Name</th>
+        <th style="width:15%">Loan Amount</th>
+        <th style="width:15%">Outstanding Amount</th>
+        <th style="width:15%">Open Date</th>
+        <th style="width:15%">Close Date</th>
+        <th style="width:10%">Current Status</th>
+      </thead>
+      <tbody>
+      {% for account in account_list %}
+        <tr>
+          <td>{{account.customer}}</td>
+          <td>{{account.loan_amount}}</td>
+          <td>{{account.outstanding_amount}}</td>
+          <td>{{account.open_date}}</td>
+          <td>{{account.close_date}}</td>
+          <td>{{account.current_Status}}</td>
+          <!--<td><a href="update/{{customer.customer_id}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="delete/{{customer.customer_id}}">Delete</a></td>-->
+        </tr>
+      {% empty %}
+          <p>no customer yet.</p>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

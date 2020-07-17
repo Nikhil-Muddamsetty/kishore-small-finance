@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Customers
+{% endblock %}
+
+{% block nav-Customers %}
+current-link
+{% endblock %}
+
+{% block main %}
+<div class="main-column">
+  <div class="col sub-navigation">
+    <ul class="sub-navigation-ul">
+      <li class="sub-navigation-li"><a class="sub-nav-link current-link" href="/customer/">All Customer</a></li>
+      <li class="sub-navigation-li"><a class="sub-nav-link " href="/customer/create/">Add New Customer</a></li>
+    </ul>
+  </div>
+  <div class="col main-data">
+    <table class="customers-data">
+      <thead>
+        <th style="width:20%">Name</th>
+        <th style="width:20%">Phone Number</th>
+        <th style="width:40%">address</th>
+        <th style="width:20%">Edit</th>
+      </thead>
+      <tbody>
+      {% for customer in customer_list %}
+        <tr>
+          <td>{{customer.customer_name}}</td>
+          <td>{{customer.customer_phone_number}}</td>
+          <td>{{customer.customer_address_city}}</td>
+          <td><a href="update/{{customer.customer_id}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="delete/{{customer.customer_id}}">Delete</a></td>
+        </tr>
+      {% empty %}
+          <p>no customer yet.</p>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

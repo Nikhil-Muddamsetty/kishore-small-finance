@@ -1,0 +1,108 @@
+body{
+  margin: 0;
+  font-size: 16px;
+  background-color: #dadada;
+  background-color: #e3e3e3;
+  font-family: 'Roboto';
+}
+
+header{
+  background-color: #e3e3e3;
+}
+
+table{
+  width: 100%;
+  padding: 1em;
+}
+
+.container{
+  max-width: 960px;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.header-column{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}
+
+.nav-ul{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-link{
+  text-decoration: none;
+  color: #3c3c3c;
+  padding-left: 3em;
+  font-weight: 500;
+}
+
+.header-col-1{
+  width :30%;
+}
+
+.header-col-2{
+  width: 60%;
+}
+
+footer{
+  background-color: #e3e3e3;
+  color: #3c3c3c;
+  padding: 2em 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.owner-information{
+  color: #C60021;
+}
+
+.sub-navigation{
+  min-height: 430px;
+}
+
+.sub-navigation-ul{
+  list-style: none;
+}
+
+.sub-navigation-li{
+  margin: 1.5em auto;
+}
+
+.sub-nav-link{
+  text-decoration: none;
+}
+
+.current-link{
+
+  color: #C60021;
+}
+
+.main-column{
+  display: flex;
+  background-color: #c6c6c6;
+}
+
+.sub-navigation{
+  width: 20%;
+  background-color: #7c7c7c;
+  background-color: #dadada;
+}
+
+.main-data{
+  width: 80%;
+}
+
+th,td{
+  border-bottom: 1px solid #ddd;
+}
+
+tr{
+  padding: 0.5em;
+}
+tr:hover{
+  background-color: #f5f5f5
+}

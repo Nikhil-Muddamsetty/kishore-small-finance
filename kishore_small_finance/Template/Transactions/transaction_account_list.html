@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Transactions
+{% endblock %}
+
+{% block nav-Transactions %}
+current-link
+{% endblock %}
+
+{% block main %}
+<div class="main-column">
+  <div class="col sub-navigation">
+    <ul class="sub-navigation-ul">
+      <li class="sub-navigation-li"><a class="sub-nav-link current-link" href="/account/">All Accounts</a></li>
+      <li class="sub-navigation-li"><a class="sub-nav-link " href="/account/create/">Add New Account</a></li>
+    </ul>
+  </div>
+  <div class="col main-data">
+    <form class="" action="/transaction/transact/submit/" method="post">
+      {%csrf_token%}
+      <p>please select the Transaction's date <input type="date" name="date"> </p>
+      <table class="customers-data">
+        <thead>
+          <th style="width:30%">Customer Name</th>
+          <th style="width:20%">Loan Amount</th>
+          <th style="width:20%">Outstanding Amount</th>
+          <th style="width:20%">Transaction</th>
+        </thead>
+        <tbody>
+        {% for account in account_list %}
+          <tr>
+            <td>{{account.customer}}</td>
+            <td>{{account.loan_amount}}</td>
+            <td>{{account.outstanding_amount}}</td>
+            <td><input type="number" name="{{account.loan_account_number}}" value="0" ></td>
+          </tr>
+        {% empty %}
+            <p>no customer yet.</p>
+        {% endfor %}
+        </tbody>
+      </table>
+      <button type="submit" >Update Transactions</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
