@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication',
-    'Transactions',
+    'Transactions.apps.TransactionsConfig',
     'Accounts',
     'Customers',
 ]

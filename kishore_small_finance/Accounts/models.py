@@ -12,7 +12,7 @@ class Account(models.Model):
     (INACTIVE, 'Inactive')
     ]
     loan_account_number = models.BigAutoField(primary_key=True)
-    customer = models.ForeignKey(Customer,on_delete=models.CASCADE,db_index=True)
+    customer = models.ForeignKey(Customer,on_delete=models.PROTECT,db_index=True)
     loan_amount = models.FloatField(default=0)
     outstanding_amount = models.FloatField(null=True,blank=True,default=0)
     open_date = models.DateField(db_index=True)
@@ -24,3 +24,8 @@ class Account(models.Model):
 
     def get_absolute_url(self):
         return reverse('account_home')
+
+    def save(self, *args, **kwargs):
+        self.loan_amount = (self.loan_amount * -1)
+        self.outstanding_amount = self.loan_amount
+        super().save(*args, **kwargs)
