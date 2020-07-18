@@ -13,4 +13,4 @@ class Transaction(models.Model):
     transaction_date = models.DateField(db_index=True)
     transaction_type = models.CharField(max_length=2,choices=TRANSACTION_TYPE,default=CREDIT)
     transaction_amount = models.FloatField()
-    outstanding_amount_record = models.FloatField()
+    outstanding_amount_record = models.FloatField(null=True)
