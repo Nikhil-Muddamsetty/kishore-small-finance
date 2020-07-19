@@ -17,11 +17,17 @@ current-link
       <li class="sub-navigation-li"><a class="sub-nav-link current-link" href="/customer/create/">Add New Customer</a></li>
     </ul>
   </div>
-  <div class="col main-data">
-    <form class="" method="post">
-      {{form.as_p}}
-      {%csrf_token%}
-      <button type="submit" name="button">Submit</button>
+
+  <div class="col main-data" >
+    <form class="" method="post" >
+      <div class="table-form-display" cellspacing="0" >
+        <div class="table-form-header">Add A New Customer</div>
+          <table>
+            {{form.as_table}}
+            {%csrf_token%}
+          </table>
+        <div class="table-form-footer"><button type="submit">Add Customer</button></div>
+      </div>
     </form>
   </div>
 </div>

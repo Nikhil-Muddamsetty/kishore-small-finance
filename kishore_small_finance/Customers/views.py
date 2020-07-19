@@ -33,3 +33,11 @@ class CustomerDeleteView(DeleteView):
             return HttpResponseRedirect(success_url)
         except models.ProtectedError:
             return HttpResponseRedirect(error_url)
+
+class CustomerAllDetailsView(ListView):
+    model = Customer
+    template_name = 'Customers/customer_all_accounts.html'
+    def get_queryset(self):
+        obj = Customer.objects.get(pk=self.kwargs['primary_key'])
+        object_list = obj.account_set.all()
+        return object_list

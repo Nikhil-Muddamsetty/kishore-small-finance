@@ -17,27 +17,39 @@ current-link
       <li class="sub-navigation-li"><a class="sub-nav-link " href="/customer/create/">Add New Customer</a></li>
     </ul>
   </div>
-  <div class="col main-data">
-    <table class="customers-data">
-      <thead>
-        <th style="width:20%">Name</th>
-        <th style="width:20%">Phone Number</th>
-        <th style="width:40%">address</th>
-        <th style="width:20%">Edit</th>
-      </thead>
-      <tbody>
-      {% for customer in customer_list %}
-        <tr>
-          <td>{{customer.customer_name}}</td>
-          <td>{{customer.customer_phone_number}}</td>
-          <td>{{customer.customer_address_city}}</td>
-          <td><a href="update/{{customer.customer_id}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="delete/{{customer.customer_id}}">Delete</a></td>
-        </tr>
-      {% empty %}
+  <div class="col main-data"> <!-- style=" height:450px; overflow:auto;"-->
+    <div class="table-display" cellspacing="0" >
+      <div class="table-header">Customer List</div>
+      <table>
+        <thead >
+          <tr class="row">
+            <th class="row-20" >Name</th>
+            <th class="row-20">Phone Number</th>
+            <th class="row-20">Address</th>
+            <th class="row-40">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for customer in customer_list %}
+          <tr class="row">
+            <td>{{customer.customer_name}}</td>
+            <td>{{customer.customer_phone_number}}</td>
+            <td>{{customer.customer_address_city}}</td>
+            <td>
+              <a href="linkedAccounts/{{customer.customer_id}}">
+                <button type="button" class="btn">View Info</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="update/{{customer.customer_id}}">
+                <button type="button" class="btn">Edit</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="delete/{{customer.customer_id}}">
+                <button type="button" class="btn">Delete</button></a>
+              </td>
+            </tr>
+          {% empty %}
           <p>no customer yet.</p>
-      {% endfor %}
-      </tbody>
-    </table>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 {% endblock %}

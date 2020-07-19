@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Customers
+{% endblock %}
+
+{% block nav-Customers %}
+current-link
+{% endblock %}
+
+{% block main %}
+<div class="main-column">
+  <div class="col sub-navigation">
+    <ul class="sub-navigation-ul">
+      <li class="sub-navigation-li"><a class="sub-nav-link current-link" href="/customer/">All Customer</a></li>
+      <li class="sub-navigation-li"><a class="sub-nav-link " href="/customer/create/">Add New Customer</a></li>
+    </ul>
+  </div>
+  <div class="col main-data"> <!-- style=" height:450px; overflow:auto;"-->
+    <div class="table-display" cellspacing="0" >
+      <div class="table-header">All Linked Accounts</div>
+      <table>
+        <thead >
+          <tr class="row">
+            <th class="row-20">Account Number</th>
+            <th class="row-20">Loan Amount</th>
+            <th class="row-20">outstanding Amount</th>
+            <th class="row-40">Open Date</th>
+            <th>Close Date</th>
+            <th>Current Status</th>
+            <th>Repayment Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for account in account_list %}
+          <tr class="row">
+            <td>{{account.loan_account_number}}</td>
+            <td>{{account.loan_amount}}</td>
+            <td>{{account.outstanding_amount}}</td>
+            <td>{{account.open_date}}</td>
+            <td>{{account.close_date}}</td>
+            <td>{{account.current_Status}}</td>
+            <td><a href="/transaction/accno/{{account.loan_account_number}}">
+              <button type="button" class="btn">View Info</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          </tr>
+          {% empty %}
+          <p>no customer yet.</p>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <button onclick="history.back()" class="btn">Go Back</button>
+  </div>
+</div>
+{% endblock %}
