@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Create New Customer
+{% endblock %}
+
+{% block nav-Customers %}
+current-link
+{% endblock %}
+
+{% block main %}
+<div class="main-column">
+  <div class="col sub-navigation">
+    <ul class="sub-navigation-ul">
+      <li class="sub-navigation-li"><a class="sub-nav-link " href="/customer/">All Customer</a></li>
+      <li class="sub-navigation-li"><a class="sub-nav-link current-link" href="/customer/create/">Add New Customer</a></li>
+    </ul>
+  </div>
+
+  <div class="col main-data" >
+      <div class="table-form-display" cellspacing="0" >
+        <div class="table-form-header">Add A New Customer</div>
+        {% if messages %}
+          <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    <div class="main-sub">
+      <button onclick="history.back()" class="btn btn-option">Go Back</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -4,6 +4,7 @@ from Customers.models import Customer
 from django.urls import reverse_lazy
 from django.db import models
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 class CustomerCreateView(CreateView):
     model = Customer
@@ -26,12 +27,14 @@ class CustomerDeleteView(DeleteView):
 
     def delete(self, request , *args , **kwargs):
         self.object = self.get_object()
-        success_url = reverse_lazy('customer_home')
-        error_url = reverse_lazy('not_possible_foreignkey_exists')
+        success_url = reverse_lazy('customer_delete')
+        error_url = reverse_lazy('customer_delete')
         try:
             self.object.delete()
+            messages.success(request, "The Customer's details has been deleted from the records")
             return HttpResponseRedirect(success_url)
         except models.ProtectedError:
+            messages.error(request, "The Customer's details cannot be deleted becuase this customer has accounts linked to his profile")
             return HttpResponseRedirect(error_url)
 
 class CustomerAllDetailsView(ListView):

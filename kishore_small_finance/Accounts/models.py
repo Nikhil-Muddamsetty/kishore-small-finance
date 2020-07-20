@@ -2,14 +2,12 @@ from django.db import models
 from Customers.models import Customer
 from django.urls import reverse
 
-# Create your models here.
-
 class Account(models.Model):
     ACTIVE = 'A'
     INACTIVE = 'I'
     ACTIVENESS_CHOICE = [
     (ACTIVE, 'Active'),
-    (INACTIVE, 'Inactive')
+    (INACTIVE, 'Inactive'),
     ]
     loan_account_number = models.BigAutoField(primary_key=True)
     customer = models.ForeignKey(Customer,on_delete=models.PROTECT,db_index=True)

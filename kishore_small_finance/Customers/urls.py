@@ -7,5 +7,6 @@ urlpatterns = [
     path('' , CustomerListView.as_view(), name='customer_home'),
     path('update/<pk>', CustomerUpdateView.as_view()),
     path('delete/<pk>', CustomerDeleteView.as_view()),
+    path('delete',CustomerDeleteView.as_view(),{'pk':0}, name='customer_delete'),
     path('linkedAccounts/<int:primary_key>',  CustomerAllDetailsView.as_view()),
 ]
