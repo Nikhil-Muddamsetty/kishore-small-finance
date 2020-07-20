@@ -19,16 +19,19 @@ current-link
   </div>
 
   <div class="col main-data" >
-    <form class="" method="post" >
+    <form class="" method="post">
       <div class="table-form-display" cellspacing="0" >
         <div class="table-form-header">Add A New Customer</div>
           <table>
             {{form.as_table}}
             {%csrf_token%}
           </table>
-        <div class="table-form-footer"><button type="submit">Add Customer</button></div>
+        <div class="table-form-footer"><button class="btn btn-safe" type="submit">Add Customer</button></div>
       </div>
     </form>
+    <div class="main-sub">
+      <button onclick="history.back()" class="btn btn-option">Go Back</button>
+    </div>
   </div>
 </div>
 {% endblock %}

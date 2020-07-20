@@ -109,11 +109,6 @@ footer{
   width: 80%;
 }
 
-.btn{
-  padding: 0.25em;
-  border-radius: 0.5em;
-}
-
 .table-display {
   font-family: Helvetica;
    border: 0.1rem solid #398B93;
@@ -136,7 +131,7 @@ footer{
 
 /* table designs */
 table{
-    table-layout: fixed;
+    table-layout: auto;
     width: 100%;
     border-collapse:collapse;
     text-transform: capitalize;
@@ -158,7 +153,8 @@ th,td{
 /* form table designs*/
 
 .table-form-display{
-  font-family: Helvetica;
+   font-family: Helvetica;
+   background-color: #F5F5F5;
    border: 0.1rem solid #398B93;
    border-radius: 1em;
    box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
@@ -172,11 +168,17 @@ th,td{
 .table-form-header,
 .table-form-footer {
    background-color:#398B93;
+   background-color: #FA8072;
+   background-color: #5F9EA0;
    color: white;
    font-size: 1.5em;
    padding: 1rem;
    text-align: center;
    text-transform: uppercase;
+}
+
+.table-form-footer{
+  background-color: #F5F5F5;
 }
 
 .table-form-display td,
@@ -194,3 +196,48 @@ th,td{
 .form-table{
   max-width: 620px;
 }
+
+.main-sub{
+  text-align: center;
+  padding:1em;
+}
+
+.warning-para{
+  color: red;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+/*====== button design ===*/
+
+.btn{
+  padding: 0.5rem;
+  border-radius: 0.25em;
+  border: 0;
+  min-width: 5rem;
+  font-weight: 500;
+}
+
+.btn-safe{
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-danger{
+  background-color: #DC143C;
+  color: #fff;
+}
+
+.btn-option{
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+/*====== row widths ==========*/
+.row-15{width: 15%;}
+.row-20{width: 20%;}
+.row-25{width: 25%;}
+.row-30{width: 30%;}
+.row-35{width: 35%;}
+.row-40{width: 40%;}
+.row-50{width: 50%;}

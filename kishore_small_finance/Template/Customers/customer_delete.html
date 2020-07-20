@@ -12,16 +12,22 @@ current-link
 {% block main %}
 <div class="main-column">
   <div class="col sub-navigation">
-    <ul class="sub-navigation-link">
-      <li><a class="sub-nav-link " href="/customer/">All Customer</a></li>
-      <li><a class="sub-nav-link current-link" href="/customer/create/">Add New Customer</a></li>
+    <ul class="sub-navigation-ul">
+      <li class="sub-navigation-li"><a class="sub-nav-link " href="/customer/">All Customer</a></li>
+      <li class="sub-navigation-li"><a class="sub-nav-link current-link" href="/customer/create/">Add New Customer</a></li>
     </ul>
   </div>
-  <div class="col main-data">
-    <form class="" method="post">
-      {%csrf_token%}
-      <h2>Are you Sure you want to delete {{object.customer_name}}'s data?'</h2>
-      <button type="submit" name="button">Submit</button>
+  <div class="col main-data" >
+    <form class="" method="post" >
+      <div class="table-form-display" cellspacing="0" >
+        <div class="table-form-header">Delete Data of Customer {{customer.customer_name|upper}}</div>
+          <p class="warning-para">Are you sure, you want to delete all data related to {{customer.customer_name|upper}}. <br>Deleted data cannot be retrived back </p>
+          {%csrf_token%}
+        <div class="table-form-footer">
+          <button class="btn btn-danger"  type="submit">Delete {{customer.customer_name|upper}}'s Data</button>
+          <button onclick="history.back()" class="btn btn-option">Go Back</button>
+        </div>
+      </div>
     </form>
   </div>
 </div>

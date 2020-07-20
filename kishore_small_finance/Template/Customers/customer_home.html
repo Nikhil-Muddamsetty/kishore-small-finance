@@ -23,10 +23,10 @@ current-link
       <table>
         <thead >
           <tr class="row">
-            <th class="row-20" >Name</th>
+            <th class="row-25" >Name</th>
             <th class="row-20">Phone Number</th>
             <th class="row-20">Address</th>
-            <th class="row-40">Options</th>
+            <th class="row-35">Options</th>
           </tr>
         </thead>
         <tbody>
@@ -37,11 +37,11 @@ current-link
             <td>{{customer.customer_address_city}}</td>
             <td>
               <a href="linkedAccounts/{{customer.customer_id}}">
-                <button type="button" class="btn">View Info</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-safe">View Info</button></a>&nbsp;&nbsp;
               <a href="update/{{customer.customer_id}}">
-                <button type="button" class="btn">Edit</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-option">Edit</button></a>&nbsp;&nbsp;
               <a href="delete/{{customer.customer_id}}">
-                <button type="button" class="btn">Delete</button></a>
+                <button type="button" class="btn btn-danger">Delete</button></a>
               </td>
             </tr>
           {% empty %}

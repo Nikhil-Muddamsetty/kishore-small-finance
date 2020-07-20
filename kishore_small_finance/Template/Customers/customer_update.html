@@ -25,9 +25,12 @@ current-link
             {{form.as_table}}
             {%csrf_token%}
           </table>
-        <div class="table-form-footer"><button type="submit">Update Customer's Data</button></div>
+        <div class="table-form-footer"><button class="btn btn-safe"  type="submit">Update Customer's Data</button></div>
       </div>
     </form>
+    <div class="main-sub">
+      <button onclick="history.back()" class="btn btn-option">Go Back</button>
+    </div>
   </div>
 </div>
 {% endblock %}
