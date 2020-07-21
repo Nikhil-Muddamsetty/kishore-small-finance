@@ -241,3 +241,37 @@ th,td{
 .row-35{width: 35%;}
 .row-40{width: 40%;}
 .row-50{width: 50%;}
+
+/*====== message notification box ======*/
+
+/* The alert message box */
+.alert {
+  padding: 1em;
+  color: white;
+  margin-bottom: 1em;
+  border-radius: 1em;
+  width:60%;
+  margin: 1em auto;
+}
+
+.success{
+  background-color: #28a745; /* green */
+}
+
+.error{
+  background-color: #dc143c; /* red */
+}
+
+/* The close button */
+.closebtn {
+  color: white;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}

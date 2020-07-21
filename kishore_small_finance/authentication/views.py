@@ -13,18 +13,14 @@ def send_messages(request):
     print("reached into functio")
 
     all_messages = get_messages(request)
-    dict_data = {}
-    no_of_messages = 0;
+    list_data = []
     for message in all_messages:
-        print(message.tags)
-        no_of_messages += 1
-        dict_data['tag'+str(no_of_messages)] = message.tags
-        dict_data['msg'+str(no_of_messages)] = message.message
-    dict_data['total_messages']=str(no_of_messages)
-    data = dict_data
-    print(data)
-    #data = {'hello':'hi'}
-    return JsonResponse(data, safe=True)
+        dict = {}
+        dict["tag"] = message.tags
+        dict["msg"] = message.message
+        list_data.append(dict)
+    print(list_data)
+    return JsonResponse(list_data, safe=False)
 
 
 

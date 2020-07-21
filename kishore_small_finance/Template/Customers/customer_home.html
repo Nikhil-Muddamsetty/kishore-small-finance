@@ -18,8 +18,7 @@ current-link
     </ul>
   </div>
   <div class="col main-data"> <!-- style=" height:450px; overflow:auto;"-->
-    <div>
-      <p id="alerts"></p>
+    <div id="alerts">
     </div>
     <div class="table-display" cellspacing="0" >
       <div class="table-header">Customer List</div>
@@ -59,39 +58,39 @@ current-link
 
 {% block javascript %}
 <script type="text/javascript">
+
+window.onload = loadMessages;
+
 function loadMessages() {
   console.log("loadmessages fired");
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-          var json_data = JSON.parse(this.responseText);
-          handelData(json_data);
-          createMessageElement(json_data);
+        var json_data = JSON.parse(this.responseText);
+        createMessageElement(json_data);
      }
   };
   xhttp.open("GET", "/general/messages/", true);
   xhttp.send();
 }
 
-function handelData(data){
-    document.getElementById("alerts").innerHTML = data["total_messages"];
-}
-
-function createMessageElement(dict){
+function createMessageElement(list_data){
+  for (x of list_data) {
+  console.log(x["tag"]);
+  console.log(x["msg"]);
   var div = document.createElement('div');
-  var class_name = dict["tag1"];
-  console.log( dict["tag1"]);
+  var class_name = x["tag"];
+  class_name += " alert"
   div.setAttribute('class',class_name);
-  div.textContent = dict["msg1"];
+  div.textContent = x["msg"];
   var span = document.createElement('span');
   span.setAttribute('class','closebtn');
   span.setAttribute('onclick',"this.parentElement.style.display='none';");
   span.textContent = 'X' ;
   div.appendChild(span);
   document.getElementById("alerts").appendChild(div)
+  }
 }
-
-window.onload = loadMessages;
 
 </script>
 {% endblock %}
