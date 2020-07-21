@@ -19,6 +19,7 @@ from authentication.views import IndexClassView
 from Customers import urls as Customer_urls
 from Accounts import urls as Account_urls
 from Transactions import urls as Transaction_urls
+from authentication import urls as authentication_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('customer/',include(Customer_urls)),
     path('account/',include(Account_urls)),
     path('transaction/',include(Transaction_urls)),
+    path('general/',include(authentication_urls)),
 ]

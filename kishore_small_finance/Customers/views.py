@@ -5,11 +5,13 @@ from django.urls import reverse_lazy
 from django.db import models
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
-class CustomerCreateView(CreateView):
+class CustomerCreateView(SuccessMessageMixin , CreateView):
     model = Customer
     fields = ['customer_name','customer_phone_number','customer_address_line_1','customer_address_line_2','customer_address_city']
     template_name = 'Customers/customer_create.html'
+    success_message = "customer Succesfully created"
 
 class CustomerListView(ListView):
     model = Customer

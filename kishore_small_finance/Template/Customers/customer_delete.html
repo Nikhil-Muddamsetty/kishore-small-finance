@@ -26,7 +26,7 @@ current-link
           {%csrf_token%}
           <button class="btn btn-danger"  type="submit">Delete {{customer.customer_name|upper}}'s Data</button>
         </form>
-        <button onclick="history.back()" class="btn btn-option">Go Back</button>
+        <button onclick="window.location=document.referrer" class="btn btn-option">Go Back</button>
       </div>
     </div>
   </div>
