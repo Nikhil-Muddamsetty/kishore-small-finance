@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView,ListView,UpdateView,DeleteView
+from django.views.generic import CreateView,ListView,UpdateView,DeleteView,TemplateView
 from Customers.models import Customer
 from django.urls import reverse_lazy
 from django.db import models
@@ -27,8 +27,8 @@ class CustomerDeleteView(DeleteView):
 
     def delete(self, request , *args , **kwargs):
         self.object = self.get_object()
-        success_url = reverse_lazy('customer_delete')
-        error_url = reverse_lazy('customer_delete')
+        success_url = reverse_lazy('status_delete')
+        error_url = reverse_lazy('status_delete')
         try:
             self.object.delete()
             messages.success(request, "The Customer's details has been deleted from the records")
@@ -36,6 +36,9 @@ class CustomerDeleteView(DeleteView):
         except models.ProtectedError:
             messages.error(request, "The Customer's details cannot be deleted becuase this customer has accounts linked to his profile")
             return HttpResponseRedirect(error_url)
+
+class CustomerDeleteStatusView(TemplateView):
+    template_name = 'Customers/customer_status_delete.html'
 
 class CustomerAllDetailsView(ListView):
     model = Customer

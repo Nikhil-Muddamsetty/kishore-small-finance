@@ -18,24 +18,17 @@ current-link
     </ul>
   </div>
   <div class="col main-data" >
-    <form class="" method="post" >
-      <div class="table-form-display" cellspacing="0" >
-        <div class="table-form-header">Delete Data of Customer {{customer.customer_name|upper}}</div>
-          <p class="warning-para">Are you sure, you want to delete all data related to {{customer.customer_name|upper}}. <br>Deleted data cannot be retrived back </p>
+    <div class="table-form-display" cellspacing="0" >
+      <div class="table-form-header">Delete Data of Customer {{customer.customer_name|upper}}</div>
+      <p class="warning-para">Are you sure, you want to delete all data related to {{customer.customer_name|upper}}. <br>Deleted data cannot be retrived back </p>
+      <div class="table-form-footer">
+        <form class="" method="post" >
           {%csrf_token%}
-        <div class="table-form-footer">
           <button class="btn btn-danger"  type="submit">Delete {{customer.customer_name|upper}}'s Data</button>
-          <button onclick="history.back()" class="btn btn-option">Go Back</button>
-        </div>
+        </form>
+        <button onclick="history.back()" class="btn btn-option">Go Back</button>
       </div>
-    </form>
-    {% if messages %}
-      <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
+    </div>
   </div>
 </div>
 {% endblock %}

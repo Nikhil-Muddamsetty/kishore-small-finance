@@ -30,8 +30,15 @@ current-link
         {% endif %}
       </div>
     <div class="main-sub">
-      <button onclick="history.back()" class="btn btn-option">Go Back</button>
+      <button onclick="goBack()" class="btn btn-option">Go Back</button>
     </div>
   </div>
 </div>
+
+<script>
+function goBack(){
+  window.history.go(-2);
+//  window.location.reload(true);
+}
+</script>
 {% endblock %}
