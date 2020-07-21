@@ -11,17 +11,18 @@ class CustomerCreateView(SuccessMessageMixin , CreateView):
     model = Customer
     fields = ['customer_name','customer_phone_number','customer_address_line_1','customer_address_line_2','customer_address_city']
     template_name = 'Customers/customer_create.html'
-    success_message = "customer Succesfully created"
+    success_message = "Customer Succesfully Created"
 
 class CustomerListView(ListView):
     model = Customer
     fields = ['customer_id','customer_name', 'customer_phone_number','customer_address_city']
     template_name = 'Customers/customer_home.html'
 
-class CustomerUpdateView(UpdateView):
+class CustomerUpdateView(SuccessMessageMixin,UpdateView):
     model = Customer
     fields = ['customer_name','customer_phone_number','customer_address_line_1','customer_address_line_2','customer_address_city']
     template_name = 'Customers/customer_update.html'
+    success_message = "Customer's Data Succesfully Updated"
 
 class CustomerDeleteView(DeleteView):
     model = Customer
