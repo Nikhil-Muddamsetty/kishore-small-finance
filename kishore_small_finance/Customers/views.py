@@ -30,8 +30,8 @@ class CustomerDeleteView(DeleteView):
 
     def delete(self, request , *args , **kwargs):
         self.object = self.get_object()
-        success_url = reverse_lazy('status_delete')
-        error_url = reverse_lazy('status_delete')
+        success_url = reverse_lazy('customer_home')
+        error_url = reverse_lazy('customer_home')
         try:
             self.object.delete()
             messages.success(request, "The Customer's details has been deleted from the records")
