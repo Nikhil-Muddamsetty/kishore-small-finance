@@ -30,11 +30,14 @@ current-link
             <p class="DetailPara"><span class="DetailParaHeadings">Loan Closing Date:</span> {{object.close_date}}</p>
             <p class="DetailPara"><span class="DetailParaHeadings">Current Status Of The Loan:</span> {% if object.current_Status == 'I' %}Inactive{% elif object.current_Status == 'A'%}Active{% endif %}</p>
           </table>
-          <td><a href="/transaction/accno/{{object.loan_account_number}}">
-        <div class="table-form-footer"><button class="btn btn-safe" type="submit">View Statement</button></div>
+          <div class="table-form-footer">
+            <a href="/transaction/accno/{{object.loan_account_number}}">
+              <button class="btn btn-safe" type="submit">View Statement</button>
+            </a>
+          </div>
       </div>
     <div class="main-sub">
-      <button onclick="window.location=document.referrer" class="btn btn-option">Go Back</button>
+      <button onclick="window.history.back()" class="btn btn-option">Go Back</button>
     </div>
   </div>
 </div>

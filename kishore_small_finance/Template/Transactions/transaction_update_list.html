@@ -9,6 +9,18 @@ Transactions
 current-link
 {% endblock %}
 
+{% block javascript %}
+<script type="text/javascript">
+function validateForm() {
+  var x = document.forms["form"]["date"].value;
+  if (x == "") {
+    alert("Please Select The Transaction Date");
+    return false;
+  }
+}
+</script>
+{% endblock %}
+
 {% block main %}
 <div class="main-column">
   <div class="col sub-navigation">
@@ -18,10 +30,13 @@ current-link
     </ul>
   </div>
   <div class="col main-data">
-    <form class="" action="/transaction/transact/submit/" method="post">
+    <div id="alerts"></div>
+    <div class="table-display" cellspacing="0">
+      <div class="table-header">Accounts List</div>
+      <form name="form" class="" action="/transaction/transact/submit/" method="post" onsubmit="return validateForm()">
       {%csrf_token%}
-      <p>please select the Transaction's date <input type="date" name="date"> </p>
-      <table class="customers-data">
+      <p style=" text-align: center; color:#556B2F; font-weight: 600; font-size: 1.1em;">please select the Transaction's date <input type="date" name="date"> </p>
+      <table>
         <thead>
           <th style="width:30%">Customer Name</th>
           <th style="width:20%">Loan Amount</th>
@@ -41,8 +56,11 @@ current-link
         {% endfor %}
         </tbody>
       </table>
-      <button type="submit" >Update Transactions</button>
-    </form>
+      <div class="main-sub">
+        <button type="submit" class="btn btn-safe" >Update Transactions</button>
+      </div>
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}
