@@ -8,17 +8,21 @@ def uploadTransactionsView(request):
     if request.POST:
         transaction_data = request.POST.dict()
         transaction_date = transaction_data.pop('date')
+        print("date: ",transaction_date)#----------------------------------------------------
         accounts_objects = Account.objects.all()
         for account in accounts_objects:
             loan_account_number_str = str(account.loan_account_number)
             if loan_account_number_str in transaction_data:
+                print("match of account number found")#----------------------------------------------------
                 amount = float(transaction_data.pop(loan_account_number_str))
+                print("recieved amount =", amount)#----------------------------------------------------
                 account.outstanding_amount += amount
+                print("outstanding amount is :",account.outstanding_amount)#----------------------------------------------------
                 if account.outstanding_amount >=0:
                     account.close_date = transaction_date
                     account.current_Status = 'I'
+                account.save(force_update=True)
                 Transaction.objects.create(account=account,transaction_date=transaction_date,transaction_type='CR',transaction_amount=amount,outstanding_amount_record=account.outstanding_amount)
-                account.save()
         return redirect('/account/')
 
 class TransactionAccountListView(ListView):

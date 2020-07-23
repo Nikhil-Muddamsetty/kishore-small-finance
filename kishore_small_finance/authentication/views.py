@@ -8,10 +8,7 @@ class IndexClassView(TemplateView):
 
 
 def send_messages(request):
-    if request.GET:
-            print("reached into functio1")
-    print("reached into functio")
-
+    print("sending message")
     all_messages = get_messages(request)
     list_data = []
     for message in all_messages:

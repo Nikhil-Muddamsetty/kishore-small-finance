@@ -23,7 +23,3 @@ class Account(models.Model):
 
     def get_absolute_url(self):
         return reverse('account_home')
-
-    def save(self, *args, **kwargs):
-        self.outstanding_amount = (self.loan_amount * -1)
-        super().save(*args, **kwargs)
