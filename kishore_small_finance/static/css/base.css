@@ -275,3 +275,21 @@ th,td{
 .closebtn:hover {
   color: black;
 }
+
+/*-------------------- Details view ---------------*/
+
+.DetailPara{
+  font-weight: 500;
+    margin-bottom: 2em;
+}
+
+.DetailParaHeadings{
+  font-weight: 600;
+  padding: 1.5em;
+}
+
+/*----------------- Date Selector -------------------*/
+.date-selector{
+  text-align: center;
+  color: blue;
+}

@@ -18,25 +18,35 @@ current-link
     </ul>
   </div>
   <div class="col main-data">
-      <table class="customers-data">
-        <thead>
-          <th style="width:30%">Transaction Date</th>
-          <th style="width:20%">Cr/Dr</th>
-          <th style="width:20%">Amount</th>
-        </thead>
-        <tbody>
-        {% for transaction in transaction_list %}
-          <tr>
-            <td>{{transaction.transaction_date}}</td>
-            <td>{{transaction.transaction_type}}</td>
-            <td>{{transaction.transaction_amount}}</td>
-          </tr>
-        {% empty %}
-            <p>no customer yet.</p>
-        {% endfor %}
-        </tbody>
-      </table>
-        <button onclick="history.back()" class="btn">Go Back</button>
+    <div id="alerts"></div>
+      <div class="table-display" cellspacing="0">
+        <div class="table-header">Accounts Statement</div>
+        <table>
+          <thead>
+            <th class="row-15">Transaction Date</th>
+            <th class="row-30">Transaction Note</th>
+            <th class="row-15">Cr/Dr</th>
+            <th class="row-20">Amount</th>
+            <th class="row-20">Balance</th>
+          </thead>
+          <tbody>
+          {% for transaction in transaction_list %}
+            <tr>
+              <td>{{transaction.transaction_date}}</td>
+              <th>{{transaction.transaction_note}}</th>
+              <td>{{transaction.transaction_type}}</td>
+              <td>{{transaction.transaction_amount}}</td>
+              <th>{{transaction.outstanding_amount_record}}</th>
+            </tr>
+          {% empty %}
+              <p>no customer yet.</p>
+          {% endfor %}
+          </tbody>
+        </table>
+        <div class="main-sub">
+          <button onclick="window.history.back()" class="btn btn-option">Go Back</button>
+        </div>
+      </div>
   </div>
 </div>
 {% endblock %}

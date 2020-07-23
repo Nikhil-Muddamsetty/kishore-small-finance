@@ -17,16 +17,22 @@ current-link
       <li class="sub-navigation-li"><a class="sub-nav-link " href="/transaction/transact">Add New Transactions</a></li>
     </ul>
   </div>
+
   <div class="col main-data">
-      <table class="customers-data">
+    <div id="alerts"></div>
+    <div class="table-display" cellspacing="0">
+    <div class="table-header">Accounts List</div>
+      <table>
         <thead>
-          <th style="width:30%">Customer Name</th>
-          <th style="width:20%">Loan Amount</th>
-          <th style="width:20%">Outstanding Amount</th>
-          <th style="width:20%">Open Date</th>
-          <th style="width:20%">Current Status</th>
-          <th style="width:20%">Close Date</th>
-          <th style="width:20%">View Statement</th>
+          <tr class="row">
+            <th class="row-10">Customer Name</th>
+            <th class="row-10">Loan Amount</th>
+            <th class="row-10">Outstanding Amount</th>
+            <th class="row-10">Open Date</th>
+            <th class="row-10">Current Status</th>
+            <th class="row-10">Close Date</th>
+            <th class="row-10">View Statement</th>
+          </tr>
         </thead>
         <tbody>
         {% for account in account_list %}
@@ -37,13 +43,14 @@ current-link
             <td>{{account.open_date}}</td>
             <td>{{account.current_Status}}</td>
             <td>{{account.close_date}}</td>
-            <td> <a href="accno/{{account.loan_account_number}}"> <button type="button">Statement</button> </a> </td>
+            <td> <a href="accno/{{account.loan_account_number}}"> <button type="button" class="btn btn-option">Statement</button> </a> </td>
           </tr>
         {% empty %}
             <p>no customer yet.</p>
         {% endfor %}
         </tbody>
       </table>
+    </div>
   </div>
 </div>
 {% endblock %}

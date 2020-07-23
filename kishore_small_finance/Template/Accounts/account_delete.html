@@ -18,18 +18,17 @@ current-link
     </ul>
   </div>
   <div class="col main-data" >
-    <form class="" method="post">
-      <div class="table-form-display" cellspacing="0" >
-        <div class="table-form-header">New Account Details</div>
-          <table>
-            {{form.as_table}}
-            {%csrf_token%}
-          </table>
-        <div class="table-form-footer"><button class="btn btn-safe" type="submit">Add Account</button></div>
-      </div>
-    </form>
-    <div class="main-sub">
+    <div class="table-form-display" cellspacing="0" >
+      <div class="table-form-header">Delete Account of Customer "{{account.customer|upper}}"</div>
+      <p class="warning-para">Are you sure, you want to delete the account number - {{account.loan_account_number}} belonging to {{account.customer|upper}}. <br>Deleted data cannot be retrived back </p>
+      <div class="table-form-footer">
+        <form class="" method="post" >
+          {%csrf_token%}
+          <button class="btn btn-danger"  type="submit">Delete {{account.customer|upper}}'s Data</button>
+        </form>
+        <div style="padding:0.25em;"></div>
       <button onclick="window.location=document.referrer" class="btn btn-option">Go Back</button>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Accounts
+{% endblock %}
+
+{% block nav-Accounts %}
+current-link
+{% endblock %}
+
+{% block main %}
+<div class="main-column">
+  <div class="col sub-navigation">
+    <ul class="sub-navigation-ul">
+      <li class="sub-navigation-li"><a class="sub-nav-link current-link" href="/account/">All Accounts</a></li>
+      <li class="sub-navigation-li"><a class="sub-nav-link " href="/account/create/">Add New Account</a></li>
+    </ul>
+  </div>
+  <div class="col main-data">
+    <div id="alerts"></div>
+    <div class="table-display" cellspacing="0">
+    <div class="table-header">Accounts List</div>
+      <table>
+        <thead>
+          <tr class="row">
+            <th class="row-25">Name</th>
+            <th class="row-10">Outstanding Amount</th>
+            <th class="row-10">Open Date</th>
+            <th class="row-10">Current Status</th>
+            <th class="row-10">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for account in account_list %}
+          <tr>
+            <td>{{account.customer}}</td>
+            <td>{{account.outstanding_amount}}</td>
+            <td>{{account.open_date}}</td>
+            <td> {% if account.current_Status == 'I' %}Inactive{% elif account.current_Status == 'A'%}Active{% endif %}</td>
+            <td>
+              <a href="details/{{account.loan_account_number}}">
+                <button type="button" class="btn btn-safe">View Info</button></a>&nbsp;&nbsp;
+              <a href="delete/{{account.loan_account_number}}">
+                <button type="button" class="btn btn-danger">Delete</button></a>
+            </td>
+          </tr>
+        {% empty %}
+            <p>no customer yet.</p>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+
+window.onload = loadMessages;
+
+function loadMessages() {
+  console.log("loadmessages fired");
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var json_data = JSON.parse(this.responseText);
+        createMessageElement(json_data);
+     }
+  };
+  xhttp.open("GET", "/general/messages/", true);
+  xhttp.send();
+}
+
+function createMessageElement(list_data){
+  for (x of list_data) {
+  console.log(x["tag"]);
+  console.log(x["msg"]);
+  var div = document.createElement('div');
+  var class_name = x["tag"];
+  class_name += " alert"
+  div.setAttribute('class',class_name);
+  div.textContent = x["msg"];
+  var span = document.createElement('span');
+  span.setAttribute('class','closebtn');
+  span.setAttribute('onclick',"this.parentElement.style.display='none';");
+  span.textContent = 'X' ;
+  div.appendChild(span);
+  document.getElementById("alerts").appendChild(div)
+  }
+}
+
+</script>
+{% endblock %}
